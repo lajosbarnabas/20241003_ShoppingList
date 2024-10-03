@@ -1,0 +1,9 @@
+<div class="card">
+  <h4>{{article.name}}</h4>
+  <img [src]="article.image_url" [alt]="article.name">
+  <div class="quantity">
+    <span>Mennyiség: {{article.count}}</span>
+    <button (click)="increase()">+</button>
+    <button (click)="decrease()">-</button>
+  </div>
+</div>
