@@ -14,9 +14,11 @@ export class ArticleListComponent implements OnInit{
     article.count++;
     if (!this.itemsInCart.includes(article)){
       this.itemsInCart.push(article);
-    }else{
-
     }
+  }
+
+  deleteItem(id: number){
+    this.itemsInCart = this.itemsInCart.filter(item => item.id !== id)
   }
 
   ngOnInit(): void {

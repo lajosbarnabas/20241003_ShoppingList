@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleModel } from '../models/article.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { ArticleModel } from '../models/article.model';
 })
 export class ArticleItemComponent implements OnInit {
   @Input() article!: ArticleModel;
+  @Output() articleDeleted = new EventEmitter<number>();
 
   constructor() {}
 
@@ -20,6 +21,9 @@ export class ArticleItemComponent implements OnInit {
   }
 
   decrease() {
-    if (this.article.count >= 1) this.article.count--;
+    this.article.count--;
+    if(this.article.count == 0){
+      this.articleDeleted.emit(this.article.id);
+    }
   }
 }
